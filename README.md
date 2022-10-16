@@ -4,6 +4,18 @@
 Language is essential for people to communicate with each other, and as we know there is a lot of data about languages that find their way into digital form, and with the increase in the amount of this data being published on the web, knowing the natural language of all these pieces of data is one of the most important processes because Natural Language Processing (NLP) depends on it.  Moreover, the main products of many major technology companies, including Google, Microsoft, Apple, and Amazon almost now include voice assistants.Language Identification System is a crucial initial step to improving user experience on ASR, VA, speaker diarization, or any voice-related AI models. There are several commercial and practical uses for Language Identification.
 
 
+## Selected languages
+- Arabic
+- Italian
+- Spanish
+- Portuguese
+- German 
+- French
+- English
+
+## DataSet
+The Data is Audio files collected from serval datasets VoxForg, Mozila common voice and some audio from YouTube
+
 ## Methodology
 
 Since we are working with audio data will be investigate multiple approach to get the optimal result in the methodology part,
