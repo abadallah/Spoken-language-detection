@@ -25,7 +25,7 @@ class SampleDataSet:
     def To_CSV(pathTo, df):
         df.to_csv(pathTo)
 
-    def SampleDataBase(CSVPath, TotalNumber, MaxLength, MinLength=0, FileORTime="File", Random_State=42):
+    def SampleDataBase(self, CSVPath, TotalNumber, MaxLength, MinLength=0, FileORTime="File", Random_State=42):
         """Taking a sample from the dataset according to length 
             V 1.0.0
         Paramters:
@@ -101,10 +101,10 @@ class SampleDataSet:
                 else:
                     
                     #itterate untill get number less than or equel 0 
-                    while _CountClass - len(lang.groupby('speaker', group_keys=False).apply(lambda x: _get_sample(x, n_files, Random_State))) >=0:
+                    while _CountClass - len(lang.groupby('speaker', group_keys=False).apply(lambda x: self._get_sample(x, n_files, Random_State))) >=0:
                         
                         #Take n Samples from each speaker
-                        sample = lang.groupby('speaker', group_keys=False).apply(lambda x: _get_sample(x, n_files, Random_State))
+                        sample = lang.groupby('speaker', group_keys=False).apply(lambda x: self._get_sample(x, n_files, Random_State))
 
                         #Remove sampled rows from the DataFrame to not select it again
                         lang=lang[~lang.filename.isin(sample["filename"]) ]
@@ -180,7 +180,7 @@ class SampleDataSet:
                     while  Time -Sampeld_DF.loc[Sampeld_DF["language"]==language,"length"].sum()  > 0:
                         
                         #Take n Samples from top 0.02 lengths from each speaker
-                        sample = lang.groupby('speaker', group_keys=False).apply(lambda x: _get_sample_Above_Q(x,n_files,32,0.98))
+                        sample = lang.groupby('speaker', group_keys=False).apply(lambda x: self._get_sample_Above_Q(x,n_files,32,0.98))
 
                         #Remove sampled rows from dataframe
                         lang=lang[~lang.filename.isin(sample["filename"]) ]
@@ -216,6 +216,6 @@ class SampleDataSet:
 
             return Sampeld_DF      
 
-# C = SampleDataSet.SampleDataBase("../../DataSets/FinalDataSet/FinalDataSet.csv", 100 *7, 8, 0, FileORTime="File") 
+# C = SampleDataSet().SampleDataBase("../../DataSets/FinalDataSet/FinalDataSet.csv", 100 *7, 8, 0, FileORTime="File") 
 # SampleDataSet.To_CSV("Test100.csv", C)
 #PASS
