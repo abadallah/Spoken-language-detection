@@ -25,7 +25,7 @@ class SampleDataSet:
     def To_CSV(pathTo, df):
         df.to_csv(pathTo)
 
-    def SampleDataBase(self, CSVPath, TotalNumber, MaxLength, MinLength=0, FileORTime="File", Random_State=42):
+    def SampleDataBase(self, CSVPath, TotalNumber, MaxLength, MinLength=0, FileORTime="File", Random_State=42, ISMax=False):
         """Taking a sample from the dataset according to length 
             V 1.0.0
         Paramters:
@@ -39,6 +39,10 @@ class SampleDataSet:
 
                 FileORTime str :  Sample by file or time as TotalNumber will represent number of files or number of seconds
                                 File for files OR seconds for time
+
+                Random_State int : Random state from sampling
+
+                ISMax bool : initial False it is select files with length between max and min
 
         Return:
             DataFrame With sampled files.
@@ -55,7 +59,9 @@ class SampleDataSet:
         #Read the DataFrame
         LanguageDf = pd.read_csv(CSVPath, low_memory=False) 
         LanguageDf.drop("Unnamed: 0", axis=1, inplace=True)
-        # LanguageDf=LanguageDf.loc[(LanguageDf["length"] >= MinLength) & (LanguageDf["length"] <= MaxLength )]
+
+        if ISMax == True:
+            LanguageDf=LanguageDf.loc[(LanguageDf["length"] >= MinLength) & (LanguageDf["length"] <= MaxLength )]
 
         #Shafful Dataset
         LanguageDf= LanguageDf.sample(frac=1,random_state=Random_State).reset_index(drop=True)
