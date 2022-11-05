@@ -1,3 +1,7 @@
 MVP/Mel_Sepc/Images
 MVP/Mel_Sepc/GenerateImages.ipynb
-
+MVP/Mel_Sepc/Models
+MVP/Mel_Sepc/Inferance/VGG_Mel128_200_M_12088_27801.pt
+MVP/Mel_Sepc/Model
+MVP/Mel_Sepc/ModelsCSV
+MVP/Mel_Sepc/ImagesCSV

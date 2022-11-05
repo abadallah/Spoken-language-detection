@@ -22,7 +22,7 @@ class SampleDataSet:
             sample_size =len(df)
         return df.sample(sample_size,random_state=random_State, replace=False)
 
-    def To_CSV(pathTo, df):
+    def To_CSV(self, pathTo, df):
         df.to_csv(pathTo)
 
     def SampleDataBase(self, CSVPath, TotalNumber, MaxLength, MinLength=0, FileORTime="File", Random_State=42, ISMax=False):
